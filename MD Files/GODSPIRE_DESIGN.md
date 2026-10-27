@@ -167,20 +167,20 @@ These are exploratory numbers, not finalized balance values.
 
 *Inspired by Sun Wukong from Journey to the West.*
 
-**Passive — Unrelenting Ambition**
+**Passive — King's Discipline**
 
 - Gains a **Focus** bar as hits land, up to **10 Focus points**.
-- On death, immediately recover **10 HP** and continue fighting. Cooldown: **2 combat encounters**.
-- At maximum Focus, activates **Extend!**.
+- At maximum Focus, activate **War King**.
 
-**Passive — Extend!**
+**Passive — War King**
 
 - Kong uses the **Cloud Staff**, capable of extending and shrinking.
+- On death, immediately recover **10 HP** and continue fighting. Cooldown: **2 combat encounters**.
 - All M1 attacks gain longer reach and larger hitboxes while Extend! is active.
 
 **Starting abilities**
 
-- **Cloud Crash:** Smash the ground; if an opponent is hit, damage is amplified by **150%**. Extend! increases range.
+- **Cloud Crash:** Smash the ground; if an opponent is hit, damage is amplified by **150%**. War King increases range.
 - **Cloud Step:** Become invisible, leaving behind a clone that distracts enemies; dash forward a short distance.
 
 **Unlockable abilities**
@@ -189,7 +189,7 @@ These are exploratory numbers, not finalized balance values.
 - **Stone Skin:** Harden skin to block **75% of incoming damage**. With successful timing, parry the target instead, block all incoming damage, and refresh **90% of the cooldown**.
 - **Intimidation:** Briefly stun surrounding enemies.
 - **Soaring Thrust:** While grounded, fire the staff forward; while airborne, thrust the staff downward for area damage.
-- **Cloud Burst:** Fill/sweep the arena with clouds. Enemies touching them are slowed and take **5% increased damage from others**.
+- **Cloud Burst:** Kong thrusts his staff at high speeds mulitple times, increase it's hitbox if in War King
 
 ### Nashirey — Nature's Goddess
 
