@@ -7,8 +7,8 @@ local ProfileTemplate = {
 
     CharactersUnlocked = {},
 
-    Sylver = 0,
-    Gaold = 0
+    Silver = 0,
+    Gold = 0
 }
 
 

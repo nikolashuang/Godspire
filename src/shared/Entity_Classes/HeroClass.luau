@@ -46,8 +46,15 @@ function HeroClass:BindCharacterAndComponent(character)
     self.MaxHP = Config.MaxHP
     self.HealthPoints = Config.HealthPoints
 
+    self.Stats = {
+        Strength = Config.Strength,
+        Dexterity = Config.Dexterity,
+        Arcane = Config.Arcane,
+        Vitality = Config.Vitality
+    }
+
     local HeroComponentRequest = require(heroModule)
-    self.HeroComponent = HeroComponentRequest.new(self.Character, Config)
+    self.HeroComponent = HeroComponentRequest.new(self.Character, Config, self.Stats)
 
 end
 
