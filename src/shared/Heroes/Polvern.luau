@@ -14,9 +14,9 @@ function PolvernData.new(character, charConfig, charStats)
     self.Grit = charConfig.Grit
     self.ComboCounter = 0
     self.DamageMultiplier = 0.2
-    self.TimeStationary = 0
+    self.notAttacking = 0
     self.M1Damage = self.Stats.Strength
-    self.inCombat = false
+    self.isAttacking = false
 
 
     return self
@@ -30,13 +30,13 @@ PASSIVE MECHANICS
 
 function PolvernData:BornInThePit(deltaTime)
 
-    if self.inCombat then 
+    if self.isAttacking then 
         self.M1Damage = self.Stats.Strength + (self.DamageMultiplier * self.ComboCounter)
     else
-        self.TimeStationary += deltaTime
+        self.notAttacking += deltaTime
     end
 
-    if self.TimeStationary == 3 then
+    if self.notAttacking == 3 then
         self.ComboCounter = 0
     end
 
