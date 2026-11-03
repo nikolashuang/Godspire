@@ -1,5 +1,5 @@
 {
-  "name": "Godspire",
+  "name": "GodSpire",
   "tree": {
     "$className": "DataModel",
 
@@ -10,16 +10,12 @@
     },
 
     "ServerScriptService": {
-      "Server": {
-        "$path": "src/server"
-      }
+      "$path": "src/server"
     },
 
     "StarterPlayer": {
       "StarterPlayerScripts": {
-        "Client": {
-          "$path": "src/client"
-        }
+        "$path": "src/client"
       }
     },
 

@@ -17,6 +17,7 @@ function PolvernData.new(character, charConfig, charStats)
     self.notAttacking = 0
     self.M1Damage = self.Stats.Strength
     self.isAttacking = false
+    self.inAbility = false
 
 
     return self
@@ -52,12 +53,17 @@ COMBAT MECHANICS
 
 
 function PolvernData:M1s()
+    if self.inAbility then return end
+
+    
+
 
 end
 
 function PolvernData:M1Landed(landed)
     if not landed then return end
 
+    self.isAttacking = true
     self.ComboCounter += 1
 
 end
