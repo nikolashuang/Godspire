@@ -12,8 +12,6 @@ local LoadedTracks = {}
 local humanoid = nil
 local animator = nil
 
-local AnimationController = {}
-
 function AnimationController.BindCharacter(character)
     humanoid = character:FindFirstChild("Humanoid")
     animator = humanoid:FindFirstChild("Animator")
@@ -54,6 +52,13 @@ function AnimationController.StopAnimation(storage, anim)
     if not animationTrack then return end
 
     animationTrack:Stop()
+end
+
+function AnimationController.GetTrack(storage, anim)
+    local storageTable = LoadedTracks[storage]
+    if not storageTable then return end
+
+    return storageTable[anim]
 end
 
 return AnimationController
