@@ -58,5 +58,9 @@ function HeroClass:BindCharacterAndComponent(character)
 
 end
 
+function HeroClass:BindCharacterModel(character, characterModel)
+
+end
+
 
 return HeroClass
