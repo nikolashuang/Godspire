@@ -1,4 +1,7 @@
 local Debris = game:GetService("Debris")
+local RepStorage = game:GetService("ReplicatedStorage")
+
+local HitboxConfig = require(RepStorage.Shared.Combat.Hitboxes)
 
 local PolvernData = {}
 PolvernData.__index = PolvernData
@@ -7,6 +10,8 @@ function PolvernData.new(character, charConfig, charStats)
     local self = setmetatable({}, PolvernData)
 
     self.Character = character
+    self.Humanoid = self.Character:WaitForChild("Humanoid")
+    self.RootPart = self.Character:WaitForChild("HumanoidRootPart")
 
     self.Stats = charStats
     
@@ -18,6 +23,8 @@ function PolvernData.new(character, charConfig, charStats)
     self.M1Damage = self.Stats.Strength
     self.isAttacking = false
     self.inAbility = false
+    self.M1Debounce = 1.5
+    self.M1Cooldown = 0
 
 
     return self
@@ -37,7 +44,7 @@ function PolvernData:BornInThePit(deltaTime)
         self.notAttacking += deltaTime
     end
 
-    if self.notAttacking == 3 then
+    if self.notAttacking >= 3 then
         self.ComboCounter = 0
     end
 
@@ -52,11 +59,13 @@ COMBAT MECHANICS
 ]]------------------------------------------------------------------------------------------
 
 
-function PolvernData:M1s()
+function PolvernData:M1s(currentHand, timing)
     if self.inAbility then return end
-
+    if self.M1Cooldown <= self.M1Debounce then return end
     
+    local handHitbox = HitboxConfig.AttachDamageBox(currentHand, Vector3.new(1.25, 0.75, 1.25))
 
+    Debris:AddItem(handHitbox, timing)
 
 end
 
@@ -64,6 +73,7 @@ function PolvernData:M1Landed(landed)
     if not landed then return end
 
     self.isAttacking = true
+    self.notAttacking = 0
     self.ComboCounter += 1
 
 end
