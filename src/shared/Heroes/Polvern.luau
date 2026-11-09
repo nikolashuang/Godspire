@@ -58,15 +58,18 @@ COMBAT MECHANICS
 
 ]]------------------------------------------------------------------------------------------
 
+local m1Hands = {
+    "leftHand",
+    "rightHand",
+    "rightHand"
+}
 
-function PolvernData:M1s(currentHand, timing)
+function PolvernData:M1s(timing, indexCount)
     if self.inAbility then return end
     if self.M1Cooldown <= self.M1Debounce then return end
     
-    local handHitbox = HitboxConfig.AttachDamageBox(currentHand, Vector3.new(1.25, 0.75, 1.25))
-
-    Debris:AddItem(handHitbox, timing)
-
+    local handHitbox = HitboxConfig.AttachDamageBox(m1Hands[indexCount], Vector3.new(1.25, 0.75, 1.25))
+    
 end
 
 function PolvernData:M1Landed(landed)
