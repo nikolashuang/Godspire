@@ -10,7 +10,7 @@ function Hitboxes.AttachDamageBox(instance, size, offset)
     DamagePartBox.CanTouch = false
     DamagePartBox.Massless = true
 
-    DamagePartBox.CFrame = instance.CFrame * offset
+    DamagePartBox.CFrame = instance.CFrame * (offset or CFrame.new())
     DamagePartBox.Parent = instance
 
     local weld = Instance.new("WeldConstraint")

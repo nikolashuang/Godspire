@@ -54,11 +54,15 @@ function HeroClass:BindCharacterAndComponent(character)
     }
 
     local HeroComponentRequest = require(heroModule)
-    self.HeroComponent = HeroComponentRequest.new(self.Character, Config, self.Stats)
+    self.HeroComponent = HeroComponentRequest.new(self, self.Stats)
 
 end
 
 function HeroClass:BindCharacterModel(character, characterModel)
+
+end
+
+function HeroClass:PlaceStatPoints()
 
 end
 
