@@ -14,18 +14,6 @@ Players.PlayerAdded:Connect(function(player)
         player:Kick("Failed to load your progress. Please rejoin.")
         return
     end
-
-    local plrCharacter = CharacterClass.new(player, profile)
-
-    if player.Character then
-        plrCharacter:BindCharacter(player.Character)
-    end
-
-    player.CharacterAdded:Connect(function(character)
-        plrCharacter:BindCharacter(character)
-    end)
-
-    Characters[player] = plrCharacter
 end)
 
 Players.PlayerRemoving:Connect(function(player)
