@@ -17,9 +17,10 @@ function PolvernData.new(hero, charStats)
 
     self.Stats = charStats
     
-    self.MaxGrit = self.Hero.MaxHP
+    self.MaxGrit = self.Hero.MaxHP / 2
     self.Grit = 0
     self.GritDecay = 0.25
+    self.GritOn = 0
     self.ComboCounter = 0
     self.DamageMultiplier = 0.2
     self.notAttacking = 0
@@ -28,6 +29,7 @@ function PolvernData.new(hero, charStats)
     self.M1Debounce = 1.5
     self.M1Cooldown = 0
     self.m1Index = 1
+    self.isM1 = 0
 
 
     return self
@@ -42,17 +44,25 @@ PASSIVE MECHANICS
 function PolvernData:BornInThePit(deltaTime, damageTaken)
     self.M1Damage = self.Stats.Strength + (self.DamageMultiplier * self.ComboCounter)
     self.Grit = math.min(self.Grit + damageTaken, self.MaxGrit)
-    self.GritOn = 0
+    
+    if damageTaken > 0 then
+        self.GritOn = 0
+    end
 end
 
 function PolvernData:CheckUpdates(deltaTime)
     self.MaxGrit = self:CalculateMaxGrit()
+    self.Grit = math.min(self.Grit, self.MaxGrit)
     self.notAttacking += deltaTime
     self.GritOn += deltaTime
+    self.isM1 += deltaTime
 
     if self.notAttacking >= 2 then
         self.ComboCounter = 0
-        if self.m1Index > 1 then self.m1Index = 1 end
+    end
+
+    if self.isM1 >= 4 then
+        self.m1Index = 1
     end
 
     if self.GritOn >= 4 then
@@ -81,13 +91,10 @@ local m1Hands = {
 function PolvernData:M1s(timing)
     if self.inAbility then return end
     if self.m1Index == 1 and time() - self.M1Cooldown < self.M1Debounce then return end
-    if self.m1Index > 3 then
-        self.M1Cooldown = time()
-        self.m1Index = 1
-    end
+
+    self.isM1 = 0
 
     local handName = m1Hands[self.m1Index]
-    self.m1Index += 1
     if not handName then return end
 
     local currentHand = self.Character:FindFirstChild(handName)
@@ -96,6 +103,12 @@ function PolvernData:M1s(timing)
     local handHitbox = HitboxConfig.AttachDamageBox(currentHand, Vector3.new(1.25, 0.75, 1.25))
 
     Debris:AddItem(handHitbox, timing)
+
+    self.m1Index += 1
+    if self.m1Index > 3 then
+        self.M1Cooldown = time()
+        self.m1Index = 1
+    end
 
 end
 
