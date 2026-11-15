@@ -1,7 +1,7 @@
 local UserInput = game:GetService("UserInputService")
 local RepStorage = game:GetService("ReplicatedStorage")
 
-local Remotes = RepStorage:FindFirstChild("Events")
+local Remotes = RepStorage.Shared:FindFirstChild("Events")
 local CombatEvent = Remotes:WaitForChild("CombatEvent")
 
 local InputController = {}

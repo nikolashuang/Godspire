@@ -16,7 +16,7 @@ function PolvernData.new(hero, charStats)
     self.RootPart = self.Character:WaitForChild("HumanoidRootPart")
 
     self.Stats = charStats
-    
+
     self.MaxGrit = self.Hero.MaxHP / 2
     self.Grit = 0
     self.GritDecay = 0.25
@@ -83,12 +83,17 @@ COMBAT MECHANICS
 ]]------------------------------------------------------------------------------------------
 
 local m1Hands = {
+    m1Timings = {
+        0.517,
+        0.3,
+        0.633
+    },
     "LeftHand",
     "RightHand",
     "RightHand"
 }
 
-function PolvernData:M1s(timing)
+function PolvernData:M1s()
     if self.inAbility then return end
     if self.m1Index == 1 and time() - self.M1Cooldown < self.M1Debounce then return end
 
@@ -102,7 +107,7 @@ function PolvernData:M1s(timing)
 
     local handHitbox = HitboxConfig.AttachDamageBox(currentHand, Vector3.new(1.25, 0.75, 1.25))
 
-    Debris:AddItem(handHitbox, timing)
+    Debris:AddItem(handHitbox, m1Hands.m1Timings[self.m1Index])
 
     self.m1Index += 1
     if self.m1Index > 3 then

@@ -4,7 +4,6 @@ local Players = game:GetService("Players")
 
 local PlayerProfile = require(ServerScriptService.PlayerProfile.ProfileService)
 local HeroClass = require(RepStorage.Shared.Entity_Classes.HeroClass)
-local cRemote = RepStorage.Shared.Events.CombatEvent
 
 local Characters = {}
 
@@ -33,6 +32,3 @@ Players.PlayerRemoving:Connect(function(player)
 end)
 
 
-cRemote.OnServerEvent:Connect(function(combatType)
-    
-end)
