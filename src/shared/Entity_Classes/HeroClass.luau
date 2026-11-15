@@ -33,14 +33,14 @@ function HeroClass:BindCharacterAndComponent(character)
 
     if not heroModule or not heroModule:IsA("ModuleScript") then
         warn("No Hero found for ", self.HeroName)
-        return nil
+        return
     end
 
     local Config = HeroConfig[self.HeroName]
 
     if not Config then
         warn("No Config found for ", self.HeroName)
-        return nil
+        return
     end
 
     self.MaxHP = Config.MaxHP

@@ -27,7 +27,7 @@ function PolvernData.new(hero, charStats)
     self.M1Damage = self.Stats.Strength
     self.inAbility = false
     self.M1Debounce = 1.5
-    self.M1Cooldown = 0
+    self.M1Cooldown = time()
     self.m1Index = 1
     self.isM1 = 0
 
